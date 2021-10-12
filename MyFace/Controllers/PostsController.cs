@@ -51,6 +51,7 @@ namespace MyFace.Controllers
         [HttpPost("{id}/add-interaction")]
         public IActionResult AddInteraction(int id, CreateInteractionRequestModel newInteraction)
         {
+            Console.WriteLine("Are we in here?");
             _interactions.Create(newInteraction, id);
             return RedirectToAction("PostsPage");
         }

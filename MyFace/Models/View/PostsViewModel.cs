@@ -8,8 +8,7 @@ namespace MyFace.Models.View
     public class PostsViewModel
     {
         public IEnumerable<PostViewModel> Posts { get; }
-        public CreateInteractionRequestModel CreateInteractionRequestModel { get; }
-        public InteractionType InteractionType;
+        public CreateInteractionRequestModel CreateInteractionRequestModel = new CreateInteractionRequestModel();
 
         public PostsViewModel(IEnumerable<Post> posts)
         {

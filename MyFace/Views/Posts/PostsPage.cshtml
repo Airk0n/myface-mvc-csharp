@@ -1,8 +1,16 @@
-﻿@model MyFace.Models.View.PostsViewModel
+﻿@using MyFace.Models.Database
+@using MyFace.Models.Request
+@using MyFace.Models.View
+@model MyFace.Models.View.PostsViewModel
+
 
 @{
     Layout = "_Layout";
+}
 
+@{
+
+    CreateInteractionRequestModel a = new CreateInteractionRequestModel();
 }
 
 <h2>Posts</h2>
@@ -14,9 +22,14 @@
         <p>@post.Message</p>
         <p>@post.PostedAt</p>
         <div>
+            <button asp-controller="Posts" asp-action="AddInteraction" >:)</button>
+            
             <button asp-controller="Posts" asp-action="AddInteraction" asp-route-id="@post.Id"
-                    asp-route-newInteraction="@(Model.InteractionType == MyFace.Models.Database.InteractionType.LIKE)" >:)</button>
-            <button>:(</button>
+                    asp-route-newInteraction="@dislikeInteraction" >:(</button>
+
+            @Html.BeginForm(actionName:"AddInteraction", controllerName:"Posts", FormMethod.Post){
+            @Html.HiddenFor(expression: model => model.CreateInteractionRequestModel.InteractionType, Model.CreateInteractionRequestModel.InteractionType.LIKE)
+            }
         </div>
         <br>
     }

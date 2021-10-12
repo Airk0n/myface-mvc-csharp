@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using MyFace.Models.Request;
 using MyFace.Models.View;
 using MyFace.Repositories;
@@ -15,7 +16,7 @@ namespace MyFace.Controllers
             _users = users;
         }
         
-        [HttpGet("")]
+        [HttpGet("all")]
         public IActionResult UsersPage(int pageNumber = 0, int pageSize = 10)
         {
             var users = _users.GetAll(pageNumber, pageSize);

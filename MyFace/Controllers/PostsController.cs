@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using MyFace.Models.Request;
 using MyFace.Models.View;
 using MyFace.Repositories;
@@ -36,9 +37,12 @@ namespace MyFace.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Console.WriteLine("Model not valid");
                 return View("CreatePostPage", newPost);
             }
-            
+
+            Console.WriteLine("Message:" + newPost.Message);
+            newPost.UserId = 1;
             _posts.CreatePost(newPost);
             return RedirectToAction("PostsPage");
 

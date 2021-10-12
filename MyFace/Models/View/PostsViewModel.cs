@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MyFace.Models.Database;
+using MyFace.Models.Request;
 
 namespace MyFace.Models.View
 {
     public class PostsViewModel
     {
-        public IEnumerable<PostViewModel> Posts { get; }  
+        public IEnumerable<PostViewModel> Posts { get; }
+        public CreateInteractionRequestModel CreateInteractionRequestModel { get; }
+        public InteractionType InteractionType;
 
         public PostsViewModel(IEnumerable<Post> posts)
         {

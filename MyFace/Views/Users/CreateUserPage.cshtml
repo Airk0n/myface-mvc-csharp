@@ -3,3 +3,31 @@
 @{
     Layout = "_Layout";
 }
+
+<div>
+    @using (Html.BeginForm("CreateUser", "Users", FormMethod.Post))
+    {
+        @Html.LabelFor(CreateUserRequestModel => CreateUserRequestModel.FirstName )
+        @Html.TextBoxFor(CreateUserRequestModel => CreateUserRequestModel.FirstName)
+        
+        <br>
+        
+        @Html.LabelFor(CreateUserRequestModel => CreateUserRequestModel.LastName )
+        @Html.TextBoxFor(CreateUserRequestModel => CreateUserRequestModel.LastName)
+        
+        <br>
+        
+        @Html.LabelFor(CreateUserRequestModel => CreateUserRequestModel.Email )
+        @Html.TextBoxFor(CreateUserRequestModel => CreateUserRequestModel.Email)
+        
+        <br>
+        
+        @Html.LabelFor(CreateUserRequestModel => CreateUserRequestModel.Username )
+        @Html.TextBoxFor(CreateUserRequestModel => CreateUserRequestModel.Username)
+        
+        <br>
+        
+        <input type="submit" value="Submit">
+    }
+
+</div>

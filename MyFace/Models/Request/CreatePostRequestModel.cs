@@ -4,7 +4,7 @@ namespace MyFace.Models.Request
 {
     public class CreatePostRequestModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please fill in message.")]
         [StringLength(140)]
         public string Message { get; set; }
         

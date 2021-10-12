@@ -2,5 +2,26 @@
 
 @{
     Layout = "_Layout";
+
 }
 
+<h2>Posts</h2>
+@{
+
+    foreach (var post in @Model.Posts)
+    {
+        <b><p>@post.PostedBy.DisplayName</p></b>
+        <p>@post.Message</p>
+        <p>@post.PostedAt</p>
+        <div>
+            <button asp-controller="Posts" asp-action="AddInteraction" asp-route-id="@post.Id"
+                    asp-route-newInteraction="@(Model.InteractionType == MyFace.Models.Database.InteractionType.LIKE)" >:)</button>
+            <button>:(</button>
+        </div>
+        <br>
+    }
+
+
+
+
+}

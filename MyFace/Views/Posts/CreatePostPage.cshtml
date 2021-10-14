@@ -4,17 +4,23 @@
     Layout = "_Layout";
 }
 
-<p>Create Post Page.</p>
-Message
+<h2 class="BigTitle">Create a post!</h2>
 
 <div>
     @using (Html.BeginForm("CreatePost", "Posts", FormMethod.Post))
     {
-        @Html.LabelFor(CreatePostRequestModel => CreatePostRequestModel.Message)
-        <br>
-        @Html.TextBoxFor(CreatePostRequestModel => CreatePostRequestModel.Message)
-        @Html.ValidationMessageFor(CreatePostRequestModel => CreatePostRequestModel.Message)
-        <br>
-        <input type="submit" value="Submit">
+        <div class="messageLabel">
+            @Html.LabelFor(CreatePostRequestModel => CreatePostRequestModel.Message)
+        </div>
+
+        <div class="messageArea">
+            @Html.TextAreaFor(CreatePostRequestModel => CreatePostRequestModel.Message)
+        </div>
+
+        <div class="messageError">
+            @Html.ValidationMessageFor(CreatePostRequestModel => CreatePostRequestModel.Message)
+        </div>
+
+        <input class="submitBtn" type="submit" value="Submit">
     }
 </div>

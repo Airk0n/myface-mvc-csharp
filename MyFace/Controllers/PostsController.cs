@@ -21,6 +21,7 @@ namespace MyFace.Controllers
         [HttpGet("")]
         public IActionResult PostsPage(int pageNumber = 0, int pageSize = 10)
         {
+            
             var posts = _posts.GetAll(pageNumber, pageSize);
             var viewModel = new PostsViewModel(posts);
             return View(viewModel);
@@ -55,5 +56,7 @@ namespace MyFace.Controllers
             _interactions.Create(newInteraction, id);
             return RedirectToAction("PostsPage");
         }
+        
+        // TODO [HttpDelete]
     }
 }

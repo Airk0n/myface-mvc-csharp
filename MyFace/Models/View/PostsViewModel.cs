@@ -14,5 +14,10 @@ namespace MyFace.Models.View
         {
             Posts = posts.Select(post => new PostViewModel(post));
         }
+
+        void Test()
+        {
+            var test = this;
+        }
     }
 }

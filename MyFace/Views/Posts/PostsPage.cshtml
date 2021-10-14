@@ -9,32 +9,37 @@
 }
 
 @{
-
     CreateInteractionRequestModel a = new CreateInteractionRequestModel();
 }
 
-<h2>Posts</h2>
-@{
+<ul>
+    @{
+        foreach (var post in @Model.Posts)
+        {
+            <li id="@post.Id" class="post" style="list-style: none;">
+                <p class="name">@post.PostedBy.DisplayName</p>
+                <p class="message">@post.Message</p>
+                <p class="postedAt">@post.PostedAt</p>
+                <p style="display: none" class="editPostText">Edit me!</p>
+                <br>
+            </li>
+        }
 
-    foreach (var post in @Model.Posts)
-    {
-        <b><p>@post.PostedBy.DisplayName</p></b>
-        <p>@post.Message</p>
-        <p>@post.PostedAt</p>
-        <div>
-            <button asp-controller="Posts" asp-action="AddInteraction" >:)</button>
-            
-            <button asp-controller="Posts" asp-action="AddInteraction" asp-route-id="@post.Id"
-                    asp-route-newInteraction="@dislikeInteraction" >:(</button>
-
-            @Html.BeginForm(actionName:"AddInteraction", controllerName:"Posts", FormMethod.Post){
-            @Html.HiddenFor(expression: model => model.CreateInteractionRequestModel.InteractionType, Model.CreateInteractionRequestModel.InteractionType.LIKE)
-            }
-        </div>
-        <br>
     }
+</ul>
 
+<div id="CharlesModal" class="w3-modal" postid="">
+    <div class="w3-modal-content">
+        <div class="w3-container">
+            <span onclick="document.getElementById('CharlesModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <p>Do You want to delete?</p>
+            <img src="https://imgflip.com/s/meme/Two-Buttons.jpg" height="200" width="200"/>
+            <div>
+                <button class="deleteButton" onclick="RemovePost(document.getElementById('CharlesModal').postid)">Delete</button>
+                <button class="destroyButton" onmouseenter="RuinBensDay(document.getElementById('CharlesModal').postid)">Destroy</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-}
+  Your browser does not support ben
